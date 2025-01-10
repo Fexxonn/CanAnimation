@@ -48,7 +48,6 @@ body {
   background-position-x: calc(var(--width) * -1 * var(--position));
   /* background-position-x: min(max(calc(var(--width) * -1 * var(--position)), -500px), -1000px);  */
   transition: background-position 0.4s ease-out;
-  
 }
 
 /* Secciones de cada lata */
