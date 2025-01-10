@@ -1,0 +1,226 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #ffffff99;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100vh;
+  --position: 0;
+}
+
+/* LATA */
+
+#soda {
+  display: grid;
+
+  --width: 20vw;
+  z-index: 1;
+
+  animation: ZoomLata 1s ease-out;
+  animation-iteration-count: 1;
+}
+
+#soda > * {
+  width: var(--width);
+  max-width: 275px;
+  min-width: 100px;
+
+  grid-column: 1;
+  grid-row: 1;
+  filter: drop-shadow(0 0 5px black);
+}
+
+#soda .labels {
+  background: url(./img/Cervezas.png);
+  /* background-size: calc(var(--width) * 3); */
+  background-size: min(max(calc(var(--width) * 3), 300px), 700px);
+  mask: url(./img/mask.svg);
+  mask-size: contain;
+  mix-blend-mode: multiply;
+
+  background-position-x: calc(var(--width) * -1 * var(--position));
+  /* background-position-x: min(max(calc(var(--width) * -1 * var(--position)), -500px), -1000px);  */
+  transition: background-position 0.4s ease-out;
+  
+}
+
+/* Secciones de cada lata */
+
+section {
+  display: flex;
+
+  position: fixed;
+  bottom: 0;
+  left: calc(-100vw * var(--position));
+
+  transition: left 0.45s ease-out;
+  z-index: -1;
+}
+
+section.Cervezas article {
+  height: 100vh;
+  width: 100vw;
+
+  z-index: -2;
+  overflow: hidden;
+}
+
+section.Cervezas .items {
+  position: fixed;
+
+  width: 100vw;
+  height: 100vh;
+
+  animation: caida 1s ease-out;
+}
+
+section .Heineken {
+  background-color: #86dd70;
+}
+
+section .Poker {
+  background-color: #ffdf74;
+}
+
+section .Budweiser {
+  background-color: #d14545;
+}
+
+/* Titulos de las secciones */
+
+.title {
+  position: fixed;
+
+  text-align: center;
+  font-size: 15vw;
+  font-weight: 700;
+
+  mix-blend-mode: overlay;
+  animation: titulo 1s ease-out;
+}
+
+/* Simbolos de la parte de atras de las latas */
+
+.items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  /* position: absolute; */
+}
+
+.items img {
+  height: 300px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  filter: drop-shadow(0px 200px 20px #2828284a);
+  animation: MovimientoLatas 2s ease-out infinite;
+  animation-delay: 1s;
+}
+
+/* Simbolo De los articulos */
+
+article img:nth-child(1) {
+  padding-top: 25vh;
+  --tipo: 0;
+}
+article img:nth-child(2) {
+  padding-bottom: 25vh;
+  --tipo: 0;
+}
+article img:nth-child(3) {
+  padding-top: 23vh;
+  --tipo: 0;
+}
+article img:nth-child(4) {
+  padding-bottom: 25vh;
+  --tipo: 0;
+}
+
+/* Botones */
+
+#botones {
+  position: fixed;
+  top: 45%;
+  left: 0;
+  right: 0;
+  padding: 1pc;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+#left,
+#right {
+  background-color: #dcc794c7;
+  border-radius: 15px;
+
+  font-size: 3rem;
+  padding-bottom: 10px;
+
+  width: 50px;
+  height: 50px;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* Animaciones */
+@keyframes ZoomLata {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes MovimientoLatas {
+  from {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(0, 0) scale(0.98) rotate(3deg);
+  }
+  to {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes caida {
+  from {
+    bottom: 100vh;
+  }
+
+  30% {
+    bottom: 100vh;
+  }
+
+  to {
+    bottom: 0;
+  }
+}
+
+@keyframes titulo {
+  from {
+    transform: translate(0, 500px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
