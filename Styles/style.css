@@ -40,7 +40,7 @@ body {
 #soda .labels {
   background: url(./img/Cervezas.png);
   /* background-size: calc(var(--width) * 3); */
-  background-size: min(max(calc(var(--width) * 3), 300px), 700px);
+  background-size: min(max(calc(var(--width) * 3), 300px), 1000px);
   mask: url(./img/mask.svg);
   mask-size: contain;
   mix-blend-mode: multiply;
